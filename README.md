@@ -22,6 +22,8 @@ This software is written in Python 3.8.8 and uses the following external librari
 ## What's new in V2:
 Its important to clarify that V2 of the software isn't designed to replace V1, but to be used when multiple files need to be analysed sequentially with a network that has been trained using a specific training file. It's is recommended for the user to first use V1 to explore the results given by different parameters and features of the sample, and then to use V2 to get consistent results for a series of samples. Another reason why V1 will be continually updated is it's command-line interactive interface, which allows the users to implement the algorithm without ever having to open and edit a python file.
 
+The most fundamental change with respect to V.1 is the way of communicating with the program. While V.1 uses an interactive command-line interface, V.2 requests an input_params.py file that contains a dictionary specifying the parameters and sample files for the algorithm.
+
 Check the report file in the repository for a complete description of the changes made in the software.
 
 ## Updates:
