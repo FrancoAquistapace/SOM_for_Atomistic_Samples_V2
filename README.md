@@ -20,7 +20,8 @@ This software is written in Python 3.8.8 and uses the following external librari
 (Both packages come with the basic installation of Anaconda)
 
 ## What's new in V2:
-Its important to clarify that V2 of the software isn't designed to replace V1, but to be used when multiple files need to be analysed sequentially with a network that has been trained using a specific training file. It's is recommended for the user to first use V1 to explore the results given by different parameters and features of the sample, and then to use V2 to get consistent results for a series of samples.
+Its important to clarify that V2 of the software isn't designed to replace V1, but to be used when multiple files need to be analysed sequentially with a network that has been trained using a specific training file. It's is recommended for the user to first use V1 to explore the results given by different parameters and features of the sample, and then to use V2 to get consistent results for a series of samples. 
+Check the report file in the repository for a complete description of the changes made in the software.
 
 ## Updates:
 Currently working on giving the user the option to change the learning rate funtion, eta, with a few alternatives such as a power-law and an exponential decrease.
