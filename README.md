@@ -20,4 +20,5 @@ This software is written in Python 3.8.8 and uses the following external librari
 (Both packages come with the basic installation of Anaconda)
 
 ## Updates:
+V2 allows the 
 Currently working on allowing the user to analyse several input files without having to re-enter the same parameters for each file. Another feature on the works is the option to change the learning rate funtion, _eta_, with a few alternatives such as a power-law and an exponential decrease.
