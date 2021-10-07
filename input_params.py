@@ -60,13 +60,12 @@ Copyright 2021 Franco Aquistapace
     
 """
 
-PARAMS = {'file_list' : ['KMeans_HEA_tension_dump.2525000.clusters.config', 
-                         'KMeans_HEA_tension_dump.2775000.clusters.config'], 
+PARAMS = {'file_list' : ['new_feat_dump.ensayo.2900000.config'], 
           'search_pattern' : '', 
-          'training_file' : 'KMeans_HEA_tension_dump.2525000.clusters.config', 
-          'features' : ['AtomicVolume','gr_coord', 'csp12', 'csp18'],
+          'training_file' : 'new_feat_dump.ensayo.2900000.config', 
+          'features' : ['gr_coord', 'csp12', 'csp18'],
           'f' : 1,
-          'sigma' : 1, 
+          'sigma' : 0.5, 
           'eta' : 0.5, 
           'N' : 6}
 
