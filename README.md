@@ -32,4 +32,4 @@ Check the report file in the repository for a complete description of the change
 
 ## Updates:
 Currently working on giving the user the option to change the learning rate funtion, eta, with a few alternatives such as a power-law and an exponential decrease.
-Another important issue still to be addressed is the writing times of the output files. 
+Another important issue still to be addressed is the training time of the SOM. 
