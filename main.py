@@ -37,9 +37,13 @@ np.random.seed(1982)
 # Keep track of the header lines in each file
 all_header_lines = []
 
+# Keep track of the min and the max values of every feature 
+# in the training data
+min_max_features = []
+
 # Let's streamline the process of opening a file and
 # extracting the features
-def open_and_extract(fname,features):
+def open_and_extract(fname,features,training=False):
     '''
     Parameters
     ----------
@@ -76,10 +80,26 @@ def open_and_extract(fname,features):
     
     
     norm_df = df[features].copy()
-    for feat in features:
-        min_value = norm_df[feat].min()
-        max_value = norm_df[feat].max()
-        norm_df[feat] = (norm_df[feat] - min_value) / max_value
+    # For the training process we use the min and max values 
+    # of every feature from the same sample, and save them to properly
+    # rescale the samples to be analized later
+    if training:
+        for feat in features:
+            min_value = norm_df[feat].min()
+            max_value = norm_df[feat].max()
+            delta = max_value - min_value
+            norm_df[feat] = (norm_df[feat] - min_value) / delta
+            
+            # Save min and max for later
+            min_max_features.append([min_value, max_value])
+            
+    else:
+        for i in range(len(features)):
+            feat = features[i]
+            min_value = min_max_features[i][0]
+            max_value = min_max_features[i][1]
+            delta = max_value - min_value
+            norm_df[feat] = (norm_df[feat] - min_value) / delta
         
     return df, norm_df, header_lines
 
@@ -103,7 +123,7 @@ time1 = time.time()
 # Get training data and shuffle it
 training_path = PARAMS['training_file']
 print('Preparing training data from file %s' % training_path)
-og_training_df = open_and_extract(training_path, FEATURES)[1]
+og_training_df = open_and_extract(training_path, FEATURES, training=True)[1]
 f = PARAMS['f']
 if f == '1':
     f = int(1)
@@ -162,22 +182,14 @@ if not len(files) == 0:
         for i in range(len(header_lines)):
             line = header_lines[i]
             if i == len(header_lines) - 1:
-                line = line.replace('\n', ' SOM_cluster\n')
+                line = line.replace('\n', ' som_cluster\n')
             new_file.write(line)
         
         # Now let's write the new data
-        # First we specifiy the format of each line
-        formatting = ''
-        for i in range(new_df.shape[1]):
-            if i == new_df.shape[1]-1:
-                formatting += '%d\n'
-            else:
-                formatting += '%s '
-        # Then we write the lines
-        for i in range(new_df.shape[0]):
-            new_line_tuple = tuple(new_df.iloc[i].to_list())
-            # Write new line
-            new_file.write(formatting % new_line_tuple)
+        final_string = new_df.to_csv(index=False, sep=' ', 
+                                 float_format='%s', header=False)
+        new_file.write(final_string)
+        
             
         new_file.close()
         
