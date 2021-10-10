@@ -135,8 +135,8 @@ training_df = og_training_df.sample(frac=f)
 # Train the SOM
 print('Training SOM...')
 som.train(training_df)
-
-print('SOM trained succesfully')    
+time_training = time.time()
+print('SOM trained succesfully in %.3f seconds' % (time_training - time1))    
 
 
 
