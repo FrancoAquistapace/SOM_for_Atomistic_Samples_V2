@@ -57,15 +57,24 @@ Copyright 2021 Franco Aquistapace
     N : int
         Number of output neurons of the SOM network, i.e. number 
         of groups in which to classify the atoms of the sample.
+        
+    Batched : bool
+        Whether to use batched learning or not.
+        
+    Batch_size : int
+        Size of the batches used in the training process.
     
 """
 
-PARAMS = {'file_list' : ['new_feat_dump.ensayo.2900000.config'], 
+PARAMS = {'file_list' : ['KMeans_HEA_tension_dump.2525000.clusters.config', 
+                         'KMeans_HEA_tension_dump.2775000.clusters.config'], 
           'search_pattern' : '', 
-          'training_file' : 'new_feat_dump.ensayo.2900000.config', 
-          'features' : ['gr_coord', 'csp12', 'csp18'],
+          'training_file' : 'KMeans_HEA_tension_dump.2525000.clusters.config', 
+          'features' : ['gr_coord', 'csp12'],
           'f' : 1,
-          'sigma' : 0.5, 
+          'sigma' : 0.2, 
           'eta' : 0.5, 
-          'N' : 6}
+          'N' : 6, 
+          'Batched' : True,
+          'Batch_size' : 100}
 
