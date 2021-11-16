@@ -112,8 +112,19 @@ print('Initializing SOM...')
 SIGMA = PARAMS['sigma']
 ETA = PARAMS['eta']
 SIZE = (len(FEATURES),PARAMS['N'])
-som = SOM(sigma=SIGMA, eta=ETA, size=SIZE)
 
+# Check whether the user wants to perform serial or batched training
+BATCHED = PARAMS['Batched']
+if BATCHED == False:
+    # Use serial SOM 
+    som = SOM(sigma=SIGMA, eta=ETA, size=SIZE)
+elif BATCHED == True:
+    BATCH_SIZE = PARAMS['Batch_size']
+    # Use batched SOM
+    som = SOM_Batched(sigma=SIGMA, eta=ETA, size=SIZE, 
+                      batch_size=BATCH_SIZE)
+else:
+    print('Error: Batch_size must be either True or False')
 
 # Start timing...
 time1 = time.time()
