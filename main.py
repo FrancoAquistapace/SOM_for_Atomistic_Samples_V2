@@ -124,7 +124,7 @@ elif BATCHED == True:
     som = SOM_Batched(sigma=SIGMA, eta=ETA, size=SIZE, 
                       batch_size=BATCH_SIZE)
 else:
-    print('Error: Batch_size must be either True or False')
+    print('Error: Batched must be either True or False')
 
 # Start timing...
 time1 = time.time()
